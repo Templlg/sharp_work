@@ -5,7 +5,7 @@
 12821 -> да
 23432 -> да
 */
-
+/*
 //// Функция определяет количество знаков в числе
 // параметр - целое число 
 // возвращает количество цифр в числе. в формет int
@@ -139,7 +139,7 @@ double zC = Convert.ToDouble(Console.ReadLine());
 
 double distance = FindDistance(xA, xB, xC, yA, yB, yC, zA, zB, zC);
 Console.WriteLine($"Дистанция между точками - {distance}")
-*/
+
 
 //Задача 23
 
@@ -157,3 +157,23 @@ while (current <= num)
     current++;
 }
 */
+
+int[] CreateRandomArray(int size, int minValue, int maxValue)
+{
+    int[] array = new int[size];
+
+    for (i =0; i < size; i++)
+    {
+        array[i] = new Random().Next(minValue, maxValue + 1)
+    }
+
+    return array;
+}
+
+void ShowArray(itn[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.WriteLine($"{i + 1} element is {array[]}");        
+    }
+}
