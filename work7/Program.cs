@@ -16,13 +16,14 @@
     {
         for (int j=0; j < columns; j++)
         {
-            array[i,j] = Math.Round( new Random().Next(minValue, maxValue) + new Random().NextDouble(), 3);
+            array[i,j] = Math.Round( new Random().Next(minValue, maxValue) 
+            + new Random().NextDouble(), 3);
         }
     }
     return array;
 }
 
-void Show2dArray(double[,] array)
+void Show2dArrayDouble(double[,] array)
 {
      for(int i = 0; i < array.GetLength(0);i++)
      {
@@ -35,6 +36,45 @@ void Show2dArray(double[,] array)
      Console.WriteLine();
 }
 
+void Show2dArrayInt(int[,] array)
+{
+     for(int i = 0; i < array.GetLength(0);i++)
+     {
+        for(int j = 0;j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i,j] + "\t");
+        }
+        Console.WriteLine();
+     }
+     Console.WriteLine();
+}
+
+
+int[,] CreateArrayRandomInt()
+{
+    Console.Write("Количество строк - ");
+    int rows = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Количество колонок - 2");
+    int columns = 2; //Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Минимальное число массива - ");
+    int minValue = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Максимальное число массива - ");
+    int maxValue = Convert.ToInt32(Console.ReadLine());
+
+    int[,] array = new int[rows, columns];
+
+    for (int i=0; i < rows; i++)
+    {
+        for (int j=0; j < columns; j++)
+        {
+            array[i,j] = new Random().Next(minValue, maxValue);            
+        }
+    }
+    return array;
+}
+
+/*
 double FindElement(double[,] array, int row, int column)
 {
     int CountRows = array.GetLength(0);
@@ -46,6 +86,7 @@ double FindElement(double[,] array, int row, int column)
     }
     return array[row, column];
 }
+*/
 
 /*
 Задача 47. Задайте двумерный массив размером m×n, 
@@ -56,8 +97,9 @@ m = 3, n = 4.
 1 -3,3 8 -9,9
 8 7,8 -7,1 9
 */
-double[,] array = CreateArrayRandomReal();
-Show2dArray(array);
+
+//double[,] arrayDouble = CreateArrayRandomReal();
+//Show2dArrayDouble(arrayDouble);
 
 
 
@@ -71,18 +113,19 @@ Show2dArray(array);
 8 4 2 4
 1 7 -> числа с такими индексами в массиве нет
 */
-
+/*
 Console.Write("Номер строки массива - ");
 int row = Convert.ToInt32(Console.ReadLine());
 Console.Write("Номер колонки массива - ");
 int column = Convert.ToInt32(Console.ReadLine());
 
-double value = FindElement(array, row, column);
+double value = FindElement(arrayDouble, row, column);
 if (value == -1)
     Console.Write($"В этом массиве такой позиции нету"); 
 else  
     Console.Write($"Значение {value}");  
-    
+*/ 
+
 /*
 Задача 52. Задайте двумерный массив из целых чисел. 
 Найдите среднее арифметическое элементов в каждом столбце.
@@ -94,4 +137,20 @@ else
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
 
+int[,] arrayInt = CreateArrayRandomInt();
 
+Show2dArrayInt(arrayInt);
+
+
+//Console.WriteLine("Вывод колонки: ");
+for (int j = 0; j < arrayInt.GetLength(1); j++)
+{
+    int sum=0;
+    //Console.WriteLine($"Вывод колонки {j} ");
+    for(int i=0; i < arrayInt.GetLength(0); i++)
+    {
+        //Console.WriteLine($"Вывод строки {i} ");
+        sum = sum + arrayInt[i,j];        
+    }
+    Console.WriteLine($"Сумма чисел колонки {j+1} - {sum}");
+}
